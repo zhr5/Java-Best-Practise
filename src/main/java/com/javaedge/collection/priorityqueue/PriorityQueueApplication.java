@@ -8,7 +8,7 @@ public class PriorityQueueApplication {
         PriorityQueue<Integer> pq=new PriorityQueue<>((o1, o2) -> o2-o1);//大根堆
         pq.add(1);
         pq.add(2);
-        //
-        Stream.of(pq).forEach(System.out:: println);
+        //方法引用
+        Stream.of(pq).forEach(System.out::println);
     }
 }
