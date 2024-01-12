@@ -40,7 +40,7 @@ public class Solution63 {
         //表示机器人到dp[i][j]共存在的路径数
         //dp[i][j]=dp[i-1][j]+dp[i][j-1]
         for(int j=0;j<n;j++){
-            if(obstacleGrid[0][j]==0)
+            if(obstacleGrid[0][j]==0)//差别在这里，如果存在障碍物，那么这个方向上就不存在路径可以通到终点了，如果不取&&的话障碍物后面的路径点还是会计算
                 dp[0][j]=1;
         }
         for(int i=0;i<m;i++){
