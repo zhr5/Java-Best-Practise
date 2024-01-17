@@ -1,4 +1,4 @@
-package com.javaedge.algorithm.leetcode;
+package com.javaedge.algorithm.dynamicProgramming;
 
 public class ZeroOnePack {
     public static void main(String[] args) {
