@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 /**
- * 矩阵置0，有一行
+ * 矩阵置0，有一行或1列为0 则整行整列置0
  */
 
 class Solution73 {
