@@ -41,18 +41,14 @@ public class Services {
         return res;
     }
 
-    public static List<TravelPackage> calculatePrices(Flight flight,Hotel hotel){
+    public static void calculatePrices(Flight flight,Hotel hotel){
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        TravelPackage t1= new TravelPackage(Long.valueOf(1),"套餐1",(flight.getPrice().add(hotel.getPrice())));
-        TravelPackage t2= new TravelPackage(Long.valueOf(2),"套餐2",);
-        List<Hotel> res=new ArrayList<>();
-        res.add(h1);
-        res.add(h2);
-        return res;
+
+
     }
 
 }
