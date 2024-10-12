@@ -1,6 +1,6 @@
 package com.javaedge.algorithm.leetcode;
 
-public class jz05 {
+public class SolutionJz05 {
     public String replaceSpace(StringBuffer str) {
         int P1 = str.length() - 1;
         for (int i = 0; i <= P1; i++)
