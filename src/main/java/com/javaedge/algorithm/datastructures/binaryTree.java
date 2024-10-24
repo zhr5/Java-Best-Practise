@@ -32,6 +32,12 @@ public class binaryTree {
         return res;
     }
 
+    //非递归
+    public List<Integer> preorderTraversal1(TreeNode root) {
+
+    }
+
+
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res =new ArrayList<>();
         if(root==null) return res;

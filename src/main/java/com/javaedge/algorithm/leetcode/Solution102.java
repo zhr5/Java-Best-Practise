@@ -54,12 +54,18 @@ class Solution102 {
         node1.right=node3;
         Solution102 s=new Solution102();
 
-        List<List<Integer>> res=s.levelOrder(node1);
+/*        List<List<Integer>> res=s.levelOrder(node1);
         for(int i=0;i<res.size();i++){
             for(int j=0;j<res.get(i).size();j++){
                 System.out.print(res.get(i).get(j));
             }
-        }
+        }*/
+
+        s.levelOrder(node1).stream().forEach(list -> {
+            list.forEach(integer -> System.out.print(integer + " "));
+            System.out.println();
+        });
+
 
     }
 }
