@@ -23,7 +23,7 @@ public class Solution76 {
             if (hash[chars[i]] <= 0) {
                 cnt++;
             }
-            while (cnt == m && hash[chars[j]] > 0) {// cnt 等于 t 的长度 m 时，说明当前窗口包含了 t 中所有字符
+            while (cnt == m && hash[chars[j]] > 0) {// cnt 等于 t 的长度 m 时，说明当前窗口包含了 t 中所有字符,尝试收缩窗口
                 hash[chars[j++]]--;
             }
             if (cnt == m) {
