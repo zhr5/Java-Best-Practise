@@ -29,37 +29,37 @@ public class Solution76 {
         String res = "";
 
         // 开始滑动窗口的遍历过程
-        // i作为滑动窗口的右指针，初始值为0，用于界定窗口的右边界
-        // j作为滑动窗口的左指针，初始值为0，用于界定窗口的左边界
+        // r作为滑动窗口的右指针，初始值为0，用于界定窗口的右边界
+        // l作为滑动窗口的左指针，初始值为0，用于界定窗口的左边界
         // cnt用于记录当前窗口内已经匹配上目标字符串t中字符的个数
-        for (int i = 0, j = 0, cnt = 0; i < n; i++) {
-            // 将当前右指针i指向的字符chars[i]在hash数组中的值加1
+        for (int r = 0, l = 0, cnt = 0; r < n; r++) {
+            // 将当前右指针r指向的字符chars[r]在hash数组中的值加1
             // 表示该字符在窗口内又出现了一次
-            hash[chars[i]]++;
+            hash[chars[r]]++;
 
-            // 如果hash[chars[i]] <= 0，说明当前窗口内该字符的出现次数已经使得其相对于目标字符串t中的该字符达到了一种“不缺少”的状态
+            // 如果hash[chars[r]] <= 0，说明当前窗口内该字符的出现次数已经使得其相对于目标字符串t中的该字符达到了一种“不缺少”的状态
             // 可能刚好匹配，也可能已经超过匹配所需的次数，此时将cnt的值加1
             // 表示又有一个目标字符串t中的字符在当前窗口内得到了匹配
-            if (hash[chars[i]] <= 0) {
+            if (hash[chars[r]] <= 0) {
                 cnt++;
             }
 
             // 当cnt的值等于目标字符串t的长度m时，说明当前窗口已经包含了目标字符串t的所有字符
             // 此时进入收缩窗口的逻辑
-            while (cnt == m && hash[chars[j]] > 0) {
-                // 将当前左指针j指向的字符chars[j]在hash数组中的值减1
-                // 表示该字符在窗口内的出现次数减少一次，同时左指针j右移一位（通过j++）
+            while (cnt == m && hash[chars[l]] > 0) {
+                // 将当前左指针l指向的字符chars[l]在hash数组中的值减1
+                // 表示该字符在窗口内的出现次数减少一次，同时左指针l右移一位（通过l++）
                 // 这样做是因为该字符在当前窗口内的出现次数比目标字符串t中该字符的出现次数多，此时可以收缩窗口去掉多余的该字符
-                hash[chars[j++]]--;
+                hash[chars[l++]]--;
             }
 
             // 当cnt的值等于m时，也就是当前窗口包含了目标字符串t的所有字符时
             // 进一步判断是否需要更新最小覆盖子串
             if (cnt == m) {
-                // 如果当前找到的最小覆盖子串res为空字符串或者当前窗口的长度（i - j + 1）小于res的长度
-                // 就将res更新为当前窗口对应的子串，即通过s.substring(j, i + 1)来获取并赋值给res
-                if (res.equals("") || res.length() > i - j + 1) {
-                    res = s.substring(j, i + 1);
+                // 如果当前找到的最小覆盖子串res为空字符串或者当前窗口的长度（r - l + 1）小于res的长度
+                // 就将res更新为当前窗口对应的子串，即通过s.substring(l, r + 1)来获取并赋值给res
+                if (res.equals("") || res.length() > r - l+ 1) {
+                    res = s.substring(l, r + 1);
                 }
             }
         }
@@ -107,11 +107,11 @@ public class Solution76 {
     }
 
     public static void main(String[] args) {
-/*        String s = "ADOBECODEBANC";
-        String t = "ABC";*/
-        String s = "AA";
-        String t = "AA";
-        String res = new Solution76().minWindow1(s, t);
+        String s = "ADOBECODEBANC";
+        String t = "ABC";
+/*        String s = "AA";
+        String t = "AA";*/
+        String res = new Solution76().minWindow(s, t);
         System.out.println(res);
     }
 }
