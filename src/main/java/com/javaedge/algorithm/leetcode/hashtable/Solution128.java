@@ -9,7 +9,24 @@ import java.util.Set;
 // -10^9 <= nums[i] <= 10^9
 public class Solution128 {
     public int longestConsecutive(int[] nums) {
-
+        if(nums.length==0) return 0;
+        Set<Integer> set =new HashSet<>();
+        for (int n:nums){
+            set.add(n);
+        }
+        int max=0;
+        for(int n:set){
+            if(!set.contains(n-1)){
+                int curr=n;
+                int currmax=1;
+                while(set.contains(curr+1)){
+                    curr++;
+                    currmax++;
+                }
+                max=Math.max(max,currmax);
+            }
+        }
+        return max;
     }
     public static void main(String[] args) {
         int [] nums = {100,4,200,1,3,2};// 1-2-3-4 ->4
