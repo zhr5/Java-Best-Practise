@@ -7,6 +7,7 @@ import java.util.Set;
 //请你设计并实现时间复杂度为 O(n) 的算法解决此问题。
 //0 <= nums.length <= 10^5
 // -10^9 <= nums[i] <= 10^9
+/*不断寻找连续子序列的起始数字,不符合的跳过,保证每个数字只被处理一次*/
 public class Solution128 {
     public int longestConsecutive(int[] nums) {
         if(nums.length==0) return 0;
