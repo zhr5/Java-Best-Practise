@@ -30,9 +30,10 @@ public class Solution15 {
         }
         return res;
     }
-    public static void main(String args[]){
-        int [] nums= {-1,0,1,2,-1,-4};
-        Solution15 solution15=new Solution15();
+
+    public static void main(String args[]) {
+        int[] nums = {-1, 0, 1, 2, -1, -4};
+        Solution15 solution15 = new Solution15();
         solution15.threeSum(nums).stream().forEach(System.out::print);
     }
 }
