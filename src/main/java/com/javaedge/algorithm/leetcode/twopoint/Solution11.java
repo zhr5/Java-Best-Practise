@@ -1,4 +1,4 @@
-package com.javaedge.algorithm.leetcode.twopoint;
+package com.javaedge.algorithm.leetcode.twoPoint;
 
 //盛最多水的容器
 /*输入：[1,8,6,2,5,4,8,3,7]

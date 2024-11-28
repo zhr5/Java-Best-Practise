@@ -20,9 +20,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Solution56 {
-    public int[][] merge(int[][] intervals) {
+    public static int[][] merge(int[][] intervals) {
         List<int[]> res = new ArrayList<>();
-        Arrays.sort(intervals, (o1, o2) -> (o1[0] - o2[0]));//按nums[i][0]排序 o1=nums[i] o2=nums[i+1]
+        Arrays.sort(intervals, (o1, o2) ->Integer.compare (o1[0] , o2[0]));//按nums[i][0]排序 o1=nums[i] o2=nums[i+1]
         int start = intervals[0][0];
         for (int i = 1; i < intervals.length; i++) {
             if (intervals[i][0] > intervals[i - 1][1]) {
@@ -38,6 +38,10 @@ public class Solution56 {
     }
     public static void main(String args[]){
         int [] [] intervals = {{1,3},{2,6},{8,10},{15,18}};
-        Arrays.stream(intervals).forEach(System.out::println);;
+        int [] [] res=merge(intervals);
+        for(int [] interval:res){
+            System.out.println(Arrays.toString(interval));
+        }
+
     }
 }
