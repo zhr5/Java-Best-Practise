@@ -60,7 +60,7 @@ public class Solution42 {
                     break;
                 }
                 int left = stack.peek();
-                int currWidth = i - left - 1;
+                int currWidth = i - left - 1;//因为相隔一个才需要计算
                 int currHeight = Math.min(height[left], height[i]) - height[top];
                 ans += currWidth * currHeight;
             }

@@ -30,7 +30,7 @@ public class Solution39 {
                 break;
             }
             path.add(candidates[i]);
-            backtracking(res, path, candidates, target, sum + candidates[i], i);
+            backtracking(res, path, candidates, target, sum + candidates[i], i);//这里不是i+1是因为元素可以选择无数次
             path.remove(path.size() - 1); // 回溯，移除路径 path 最后一个元素
         }
     }
