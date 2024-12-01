@@ -12,8 +12,12 @@ public class Solution15 {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 2; i++) {
-            if (nums[i] > 0) break;//全大于0
-            if (i > 0 && nums[i] == nums[i - 1]) continue;//跳过重复数字
+            if (nums[i] > 0) {
+                break;//全大于0
+            }
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;//跳过重复数字
+            }
             int l = i + 1, r = nums.length - 1;
             while (l < r) {
                 int sum = nums[i] + nums[l] + nums[r];

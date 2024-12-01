@@ -114,7 +114,7 @@ public class binaryTree {
                 root = root.left;
             }
             root = stack.pop();
-            if (root.right == null || root.right == prev) {
+            if (root.right == null || root.right == prev) {//当右子树为空或者已被访问过
                 res.add(root.val);
                 prev = root;
                 root = null;
