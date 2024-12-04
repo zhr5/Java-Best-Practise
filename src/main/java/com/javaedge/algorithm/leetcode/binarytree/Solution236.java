@@ -2,6 +2,7 @@ package com.javaedge.algorithm.leetcode.binarytree;
 
 public class Solution236 {
     //1. p q都能找到 返回最近公共祖先 2. p q 找到一个，返回p q 3. 都没找到 返回null
+    //通过递归的方式，逐层向下查找 p 和 q，并根据查找结果来确定最近公共祖先的位置。
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) {
             return root;
