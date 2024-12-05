@@ -20,7 +20,7 @@ public class Solution236 {
         if (right == null) {
             return left;
         }
-        return root;
+        return root;//在两侧子树
     }
 
     public static void main(String[] args) {
