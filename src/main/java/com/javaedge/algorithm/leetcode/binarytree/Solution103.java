@@ -23,7 +23,7 @@ public class Solution103 {
                 if(tag<0){
                     tmp.add(node.val);
                 }else{
-                    tmp.add(0,node.val);// 头插
+                    tmp.add(0,node.val);// 链表头插
                 }
                 if (node.left != null) {
                     dq.offer(node.left);
