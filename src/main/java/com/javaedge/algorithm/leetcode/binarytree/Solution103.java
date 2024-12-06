@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Solution103 {
+    //锯齿状遍历二叉树
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if(root==null) {
