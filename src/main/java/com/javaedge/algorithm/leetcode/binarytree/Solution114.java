@@ -43,7 +43,7 @@ public class Solution114 {
         }
         p.right = right;//将右子树接到左子树的最右边节点
     }
-    public void flatten2(TreeNode root) {
+    public void flatten2(TreeNode root) {//与3一样
         while (root != null) {
             //左子树为 null，直接考虑下一个节点
             if (root.left == null) {
