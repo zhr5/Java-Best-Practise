@@ -6,7 +6,7 @@ import java.util.List;
 public class Solution114 {
     // 114. 二叉树展开为链表
 
-    //O(n)
+    //O(n)空间复杂度
     public void flatten(TreeNode root) {
         List<TreeNode> list = new ArrayList<TreeNode>();
         preorderTraversal(root, list);
@@ -65,6 +65,8 @@ public class Solution114 {
 
         }
     }
+    //左子树的前序访问的最后一个节点接到根节点的右指针上，需先暂存右指针
+    //左子树的前序访问的最后一个节点怎么找
     public void flatten4(TreeNode root) {
         TreeNode curr = root;
         while (curr != null) {
@@ -72,13 +74,13 @@ public class Solution114 {
                 TreeNode next = curr.left;
                 TreeNode predecessor = next;
                 while (predecessor.right != null) {
-                    predecessor = predecessor.right;
+                    predecessor = predecessor.right;//找右子树的pre
                 }
                 predecessor.right = curr.right;
                 curr.left = null;
                 curr.right = next;
             }
-            curr = curr.right;
+            curr = curr.right;//上面的操作会不断把右子树嫁接到左子树的最右节点，且最后把左子树接到右指针
         }
     }
 
