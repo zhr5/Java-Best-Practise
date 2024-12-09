@@ -15,18 +15,17 @@ public class Solution437 {
             if (root.val == targetSum) return 1;
             return mypathSum(root.left, targetSum - root.val) + mypathSum(root.right, targetSum - root.val);
         }*/
-    public int pathSum(TreeNode root, int sum) {
-        int res = 0;
-        if (root == null) return res;
-        res = dfs(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);//以root为起点＋左右子树的结果数
+    public int pathSum(TreeNode root, long sum) {
+        int res=0;
+        if(root==null) return res;
+        res=dfs(root,sum)+pathSum(root.left,sum)+pathSum(root.right,sum);
         return res;
     }
-
-    public int dfs(TreeNode node, int sum) {
-        int res = 0;
-        if (node == null) return res;
-        if (node.val == sum) res++;
-        res += dfs(node.left, sum - node.val) + dfs(node.right, sum - node.val);
+    public int dfs(TreeNode node, long sum){
+        int res=0;
+        if(node==null) return res;
+        if(node.val==sum) res++;
+        res+=dfs(node.left,sum-node.val)+dfs(node.right,sum-node.val);
         return res;
     }
 }

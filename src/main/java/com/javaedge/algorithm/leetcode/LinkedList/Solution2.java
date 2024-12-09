@@ -13,70 +13,30 @@ public class Solution2 {
     输出：[8,9,9,9,0,0,0,1]                                          9999
                                                                  10009998
     */
+    //和21题类似，只是多了一个carry变量来记录进位
+    //时间复杂度O(max(m,n))，空间复杂度O(max(m,n))
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int carry=0;
-        ListNode preHead=new ListNode(0);
-        ListNode p1=reverseList1(l1),p2=reverseList1(l2);
-        ListNode p3=null;
-        while(p1!=null||p2!=null){
-            int sum=(p1.val+p2.val+carry);
-            if(preHead.next==null){
-                p3=new ListNode(sum);
-                preHead.next=p3;
+        ListNode preHead = new ListNode(0);
+        ListNode curr = preHead;
+        int carry = 0;
+        while (l1 != null || l2 != null) {
+            int sum = carry;
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
             }
-            carry=sum/10;
-            p3=p3.next;
-            p1=p1.next;
-            p2=p2.next;
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
+            }
+            carry = sum / 10;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
         }
-        if(p1==null){
-            p2.val+=carry;
-            p3.next=p2;
+        if (carry > 0) {
+            curr.next = new ListNode(carry);
         }
-        if(p2==null){
-            p1.val+=carry;
-        }
-
-
+        return preHead.next;
     }
-    public ListNode reverseList1(ListNode head) {
-        ListNode prev=null;//指向上一个遍历的节点
-        while(head!=null){
-            ListNode next=head.next;
-            head.next=prev;
-            prev=head;
-            head=next;
-        }
-        return prev;
-    }
-    public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
-        int in=0;
-        ListNode head=null,tail=null;
-        while(l1!=null||l2!=null){
-            int n1 = l1 != null ? l1.val : 0;
-            int n2 = l2 != null ? l2.val : 0;
-            int sum = n1 + n2 + in;
-            if (head == null) {
-                head = tail = new ListNode(sum % 10);
-            } else {
-                tail.next = new ListNode(sum % 10);
-                tail = tail.next;
-            }
-            in = sum/10;
-            if(l1!=null){
-                l1=l1.next;
-            }
-
-            if(l2!=null){
-                l2=l2.next;
-            }
-        }
-        if(in>0){
-            tail.next = new ListNode(in);
-        }
-
-        return head;
-    }
-}
 
 }
