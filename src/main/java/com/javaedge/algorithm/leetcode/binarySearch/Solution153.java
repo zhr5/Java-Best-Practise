@@ -50,5 +50,6 @@ public class Solution153 {
 //             则nums[mid]==nums[high]，则会走一次else语句，则low=mid+1,此时low指向的是最小值的下一个下标，
 //             则需要return[low-1]
         return nums[low];
+        /*本质是这题是寻找最小值，而不是找target，所以找到当low+1=high，且nums[mid] >= nums[high]就应该把low右移到high跳出循环，因为此时mid=low,把low移到hign就找到最小值了*/
     }
 }

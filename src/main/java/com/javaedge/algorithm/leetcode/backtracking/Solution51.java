@@ -13,12 +13,53 @@ public class Solution51 {
     给你一个整数 n ，返回所有不同的 n 皇后问题 的解决方案。
 
     每一种解法包含一个不同的 n 皇后问题 的棋子放置方案，该方案中 'Q' 和 '.' 分别代表了皇后和空位。*/
-    List<List<String>> re=new ArrayList<>();
-    LinkedList<String> tmp=new LinkedList<>();
+    List<List<String>> res=new ArrayList<>();
     public List<List<String>> solveNQueens(int n) {
-
+        char [] [] chess=new char [n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                chess[i][j]='.';
+            }
+        }//初始化棋盘
+        dfs(chess,0,n);
+        return res;
     }
-    public void backtracking(int n,int row,int column){
-        
+    public void dfs(char [] [] chess,int row,int n){//row表示当前行 0-n-1
+        if(row==n){//到达最后一行
+            res.add(convertToChess(chess));
+            return;
+        }
+        for(int i=0;i<n;i++){
+            if(check(chess,row,i)){
+                chess[row][i]='Q';
+                dfs(chess,row+1,n);
+                chess[row][i]='.';
+            }
+        }
+    }
+    public boolean check(char [] [] chess,int row,int i){
+        //同一列
+        for(int r=row-1;r>=0;r--){
+            if(chess[r][i]=='Q')
+                return false;
+        }
+        //左斜线
+        for(int r=row-1,c=i-1;r>=0&&c>=0;r--,c--){
+            if(chess[r][c]=='Q')
+                return false;
+        }
+        //右斜线
+        for(int r=row-1,c=i+1;r>=0&&c<chess[0].length;r--,c++){
+            if(chess[r][c]=='Q')
+                return false;
+        }
+        return true;
+    }
+    public List<String> convertToChess(char [] [] chess){//将二维数组转化为一维数组
+        ArrayList<String> res=new ArrayList<>();
+        for(char [] s:chess){
+            res.add(new String(s));
+        }
+        return res;
     }
 }
