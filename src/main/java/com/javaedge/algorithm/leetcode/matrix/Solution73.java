@@ -1,4 +1,4 @@
-package com.javaedge.algorithm.leetcode.arrays;
+package com.javaedge.algorithm.leetcode.matrix;
 
 public class Solution73 {
     // 73. Set Matrix Zeroes
