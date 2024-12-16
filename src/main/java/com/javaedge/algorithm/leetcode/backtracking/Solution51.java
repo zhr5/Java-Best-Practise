@@ -1,7 +1,6 @@
 package com.javaedge.algorithm.leetcode.backtracking;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Solution51 {
