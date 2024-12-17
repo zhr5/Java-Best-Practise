@@ -5,17 +5,17 @@ import java.util.*;
 public class Solution994 {
     //腐烂的橘子
     public int orangesRotting(int[][] grid) {
-        int M = grid.length;
-        int N = grid[0].length;
+        int row = grid.length;
+        int column = grid[0].length;
         Queue<int[]> queue = new LinkedList<>();// 队列，用于存储腐烂的橘子的坐标
 
         int count = 0; // count 表示新鲜橘子的数量
-        for (int r = 0; r < M; r++) {
-            for (int c = 0; c < N; c++) {
-                if (grid[r][c] == 1) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                if (grid[i][j] == 1) {
                     count++;
-                } else if (grid[r][c] == 2) {
-                    queue.add(new int[]{r, c});
+                } else if (grid[i][j] == 2) {
+                    queue.add(new int[]{i, j});
                 }
             }
         }
@@ -33,7 +33,7 @@ public class Solution994 {
                     count--;
                     queue.add(new int[]{r-1, c});
                 }
-                if (r+1 < M && grid[r+1][c] == 1) {// 下
+                if (r+1 < row && grid[r+1][c] == 1) {// 下
                     grid[r+1][c] = 2;
                     count--;
                     queue.add(new int[]{r+1, c});
@@ -43,7 +43,7 @@ public class Solution994 {
                     count--;
                     queue.add(new int[]{r, c-1});
                 }
-                if (c+1 < N && grid[r][c+1] == 1) {// 右
+                if (c+1 < column && grid[r][c+1] == 1) {// 右
                     grid[r][c+1] = 2;
                     count--;
                     queue.add(new int[]{r, c+1});
