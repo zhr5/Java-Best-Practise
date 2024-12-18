@@ -15,30 +15,30 @@ public class Solution148 {
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null)
             return head;
-        ListNode fast = head.next, slow = head;
+        ListNode fast = head.next, slow = head;//fast从head.next开始，slow从head开始是为了让slow刚好在中间节点的前缀
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
-
-        ListNode tmp = slow.next;
-        slow.next = null;
+        //使用快慢指针将链表分成两个子链表
+        ListNode tmp = slow.next;//保存后半段链表的头节点
+        slow.next = null;//断开后半段链表
         ListNode left = sortList(head);
         ListNode right = sortList(tmp);
-        ListNode h = new ListNode(0);
-        ListNode res = h;
+        ListNode h = new ListNode(0);//虚拟头节点   从这里开始和21题一样
+        ListNode curr = h;
         while (left != null && right != null) {
             if (left.val < right.val) {
-                h.next = left;
+                curr.next = left;
                 left = left.next;
             } else {
-                h.next = right;
+                curr.next = right;
                 right = right.next;
             }
-            h = h.next;
+            curr = curr.next;
         }
 
-        h.next = left != null ? left : right;//另一个链表可能还有剩余节点未处理
-        return res.next;
+        curr.next = left != null ? left : right;//另一个链表可能还有剩余节点未处理
+        return h.next;
     }
 }
