@@ -51,7 +51,44 @@ public class Solution32 {
     如果 `i - dp[i - 1] - 2` 位置存在并且有效（即在字符串范围内），则它前面也可能存在一个有效的括号子串。因此，加上 `dp[i - dp[i - 1] - 2]` 的值可以将这些连续的有效括号子串连接起来，从而计算出更长的有效括号子串长度。
 */
 
-
+    /**
+     * 计算最长的有效括号子串的长度
+     * 有效括号子串指的是左括号和右括号正确匹配的子串
+     * 使用栈来跟踪每个未匹配的左括号的索引，以便在遇到右括号时，可以计算当前有效子串的长度
+     *
+     * @param s 输入的字符串，只包含 '(' 和 ')'
+     * @return 返回最长有效括号子串的长度
+     */
+    public static int longestValidParentheses1(String s) {
+        // 初始化最大长度为0
+        int max = 0;
+        // 使用栈来跟踪每个未匹配的左括号的索引
+        Deque<Integer> stack = new LinkedList<>();
+        // 遍历字符串中的每个字符
+        for (int i = 0; i != s.length(); i++) {
+            // 如果当前字符是左括号，将其索引入栈
+            if (s.charAt(i) == '(')
+                stack.push(i);
+            else {// 当前字符是右括号
+                // 如果栈不为空且栈顶元素是未匹配的左括号，则匹配成功，栈顶元素出栈
+                if (!stack.isEmpty() && s.charAt(stack.peek()) == '(') {
+                    stack.poll();// 匹配的左括号出栈
+                    // 如果栈不为空，计算当前有效子串的长度
+                    if (!stack.isEmpty()) {
+                        max = Math.max(max, i - stack.peek());
+                    } else {
+                        // 这里是因为栈内元素全部出栈，说明从头开始的序列都是有效的，那么长度就是当前序号+1
+                        max = Math.max(max, i + 1);
+                    }
+                } else {
+                    // 如果当前右括号没有匹配的左括号，将其索引入栈
+                    stack.push(i);
+                }
+            }
+        }
+        // 返回最长有效括号子串的长度
+        return max;
+    }
 
 
     /**
@@ -61,7 +98,7 @@ public class Solution32 {
      * @param s 输入的字符串，包含括号字符
      * @return 返回最长有效括号子串的长度
      */
-    public int longestValidParentheses1(String s) {
+    public int longestValidParentheses2(String s) {
         // 初始化最大长度为0
         int maxans = 0;
         // 使用栈来跟踪括号的索引
