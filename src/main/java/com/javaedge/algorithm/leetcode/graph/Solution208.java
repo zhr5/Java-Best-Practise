@@ -79,6 +79,18 @@ public class Solution208 {
             return node;
         }
     }
+    public static void main(String[] args) {
+        Trie trie = new Solution208().new Trie();
+        trie.insert("apple");
+        trie.insert("banana");
+        trie.insert("orange");
+        trie.insert("apricot");
+        trie.insert("grape");
+        trie.insert("pear");
+        System.out.println(trie.search("apple")); // true
+        System.out.println(trie.search("banana")); // true
+        System.out.println(trie.search("orange")); // true
+    }
 }
 
 /**
