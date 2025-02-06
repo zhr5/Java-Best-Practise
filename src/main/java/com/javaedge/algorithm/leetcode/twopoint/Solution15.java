@@ -35,6 +35,34 @@ public class Solution15 {
         return res;
     }
 
+    public List<List<Integer>> threeSum1(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] > 0) break; // 提前终止
+            if (i > 0 && nums[i] == nums[i - 1]) continue; // 跳过重复
+
+            int l = i + 1, r = nums.length - 1;
+            int target = -nums[i];
+            while (l < r) {
+                int sum = nums[l] + nums[r];
+                if (sum > target) {
+                    r--; // 先移动 r
+                    while (l < r && nums[r] == nums[r + 1]) r--; // 跳过重复
+                } else if (sum < target) {
+                    l++; // 先移动 l
+                    while (l < r && nums[l] == nums[l - 1]) l++; // 跳过重复
+                } else {
+                    res.add(new ArrayList<>(Arrays.asList(nums[i], nums[l], nums[r])));
+                    r--; // 先移动 r
+                    l++; // 先移动 l
+                    while (l < r && nums[r] == nums[r + 1]) r--; // 跳过重复
+                    while (l < r && nums[l] == nums[l - 1]) l++; // 跳过重复
+                }
+            }
+        }
+        return res;
+    }
     public static void main(String args[]) {
         int[] nums = {-1, 0, 1, 2, -1, -4};
         Solution15 solution15 = new Solution15();
