@@ -93,6 +93,29 @@ public class Solution42 {
         return ans;
     }
 
+    //查问题
+    /*public int trap3(int[] height) {
+        int res = 0;
+        for (int i = 1; i < height.length - 1; i++) {
+            int lh = height[i];
+            int rh = height[i];
+            for (int j = i - 1; j >= 0; j--) {
+                if(height[j]>lh){
+                    lh=height[j];
+                }
+            }
+            for (int k = i + 1; k < height[k]; k++) {
+                if(height[k]>rh){
+                    rh=height[k];
+                }
+            }
+            int h = Math.min(lh, rh) - height[i];
+            if (h > 0)
+                res += h;
+        }
+        return res;
+    }*/
+
     public static void main(String[] args) {
         int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         System.out.println(trap(height));

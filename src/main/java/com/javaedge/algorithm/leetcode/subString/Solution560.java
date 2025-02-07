@@ -26,7 +26,7 @@ public class Solution560 {
     这样，通过遍历一次数组，我们可以统计出和为k的连续子数组的个数，并且时间复杂度为O(n)，其中n为数组的长度。
     */
         int count = 0, pre = 0;
-        HashMap< Integer, Integer > mp = new HashMap < > (); //存储和为X值出现的次数
+        HashMap<Integer, Integer> mp = new HashMap<>(); //存储和为X值出现的次数
         mp.put(0, 1);//如果没有这个初始化，那么sum-k=0时，map中没有0，判断为false，就会漏掉这种情况
         for (int i = 0; i < nums.length; i++) {
             pre += nums[i];
