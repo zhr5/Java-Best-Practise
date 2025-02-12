@@ -57,3 +57,6 @@ public class GaodeAddressParser {
         System.out.println(result1);
     }
 }
+
+//{"country":"中国","formatted_address":"广东省潮州市湘桥区金马大道","city":"潮州市","adcode":"445102","level":"道路","building":{"name":[],"type":[]},"number":[],"province":"广东省","citycode":"0768","street":"金马大道","district":"湘桥区","location":"116.677011,23.656237","neighborhood":{"name":[],"type":[]},"township":[]}
+// {"country":"中国","formatted_address":"广东省潮州市湘桥区","city":"潮州市","adcode":"445102","level":"区县","building":{"name":[],"type":[]},"number":[],"province":"广东省","citycode":"0768","street":[],"district":"湘桥区","location":"116.628343,23.675104","neighborhood":{"name":[],"type":[]},"township":[]}
