@@ -23,8 +23,10 @@ public class address {
         // 5//
         //RequestBody body = RequestBody.create(mediaType,  "{\"text\":\"潮州市湘桥区裕和天地花园-6号楼-1单元-401\"}");
         RequestBody body = RequestBody.create(mediaType,  "{\"text\":\"潮州市湘桥区裕和天地花园-6号楼-1单元-101\"}");
+        //https://aip.baidubce.com/rpc/2.0/nlp/v1/address?access_token
+        //https://aip.baidubce.com/rpc/2.0/nlp/v1/entity_analysis
         Request request = new Request.Builder()
-                .url("https://aip.baidubce.com/rpc/2.0/nlp/v1/address?access_token=" + getAccessToken())
+                .url("https://aip.baidubce.com/rpc/2.0/nlp/v1/entity_analysis?access_token=" + getAccessToken())
                 .method("POST", body)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
@@ -39,7 +41,7 @@ public class address {
     //{"lat":23.663353,"detail":"裕和天地花园-6幢-1梯-401","town":"桥东街道","phonenum":"","city_code":"445100","province":"广东省","person":"","lng":116.684338,"province_code":"440000","text":"潮州市湘桥区裕和天地花园-6幢-1梯-401","county":"湘桥区","city":"潮州市","county_code":"445102","town_code":"445102007","log_id":1889583550499472700}
     //{"lat":23.663353,"detail":"裕和天地花园-6号楼-1单元-401","town":"桥东街道","phonenum":"","city_code":"445100","province":"广东省","person":"","lng":116.684338,"province_code":"440000","text":"潮州市湘桥区裕和天地花园-6号楼-1单元-401","county":"湘桥区","city":"潮州市","county_code":"445102","town_code":"445102007","log_id":1889583937741338416}
     //{"lat":23.663353,"detail":"裕和天地花园-6号楼-1单元-101","town":"桥东街道","phonenum":"","city_code":"445100","province":"广东省","person":"","lng":116.684338,"province_code":"440000","text":"潮州市湘桥区裕和天地花园-6号楼-1单元-101","county":"湘桥区","city":"潮州市","county_code":"445102","town_code":"445102007","log_id":1889584199224950871}
-
+    //{"text":"潮州市湘桥区裕和天地花园-6号楼-1单元-101","entity_analysis":[{"mention":"潮州市湘桥区裕和天地花园","category":{"level_1":"","level_2":"","level_3":""},"confidence":0.005694869440048933,"desc":"","status":"NIL"},{"mention":"单元","category":{"level_1":"文字词汇","level_2":"词汇","level_3":"汉语词汇"},"confidence":0.9999978542327881,"desc":"汉语词语","status":"LINKED"}],"log_id":1889939497085332610}
     /**
      * 从用户的AK，SK生成鉴权签名（Access Token）
      *
