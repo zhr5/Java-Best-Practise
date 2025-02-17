@@ -40,7 +40,7 @@ public class Solution76 {
             // 如果hash[chars[right]] <= 0，说明当前窗口内该字符的出现次数已经使得其相对于目标字符串t中的该字符达到了一种“不缺少”的状态
             // 可能刚好匹配，也可能已经超过匹配所需的次数，此时将cnt的值加1
             // 表示又有一个目标字符串t中的字符在当前窗口内得到了匹配
-            if (hash[chars[right]] <= 0) {
+            if (hash[chars[right]] <= 0) {//大于0表示超配了不用统计匹配个数了
                 cnt++;
             }
 
@@ -109,8 +109,8 @@ public class Solution76 {
     public static void main(String[] args) {
 /*        String s = "ADOBECODEBANC";
         String t = "ABC";*/
-        String s = "AA";
-        String t = "AA";
+        String s = "ABCACD";
+        String t = "AAB";
         String res = new Solution76().minWindow(s, t);
         System.out.println(res);
     }
