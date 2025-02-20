@@ -54,7 +54,7 @@ public class Solution468 {
             }
             try {
                 int num = Integer.parseInt(s, 16);
-                if (num < 0 || num > 65535) {
+                if (num < 0 || num > 65535) {// 十六进制数4位范围是0~65535
                     return "Neither";
                 }
             } catch (NumberFormatException e) {
