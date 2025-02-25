@@ -20,7 +20,7 @@ public String serialize(TreeNode root) {
     StringBuilder res = new StringBuilder("[");
 
     // 使用队列辅助进行层次遍历
-    Queue<TreeNode> queue = new LinkedList<>() {
+    Queue<TreeNode> queue = new LinkedList<TreeNode>() {
         {
             add(root);
         }
@@ -66,7 +66,7 @@ public TreeNode deserialize(String data) {
     TreeNode root = new TreeNode(Integer.parseInt(vals[0]));
 
     // 使用队列辅助构建二叉树
-    Queue<TreeNode> queue = new LinkedList<>() {
+    Queue<TreeNode> queue = new LinkedList<TreeNode>() {
         {
             add(root);
         }
