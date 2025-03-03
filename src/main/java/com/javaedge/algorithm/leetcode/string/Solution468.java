@@ -1,4 +1,4 @@
-package com.javaedge.algorithm.leetcode;
+package com.javaedge.algorithm.leetcode.string;
 
 public class Solution468 {
     public String validIPAddress(String IP) {
@@ -64,3 +64,16 @@ public class Solution468 {
         return "IPv6";
     }
 }
+
+/*
+.：表示任意单个字符（除了换行符）。要匹配实际的点号，需使用\\.
+        *：表示前一个字符出现0次或多次
+        +：表示前一个字符出现1次或多次
+        ?：表示前一个字符出现0次或1次
+        ^：表示字符串的开始位置
+        $：表示字符串的结束位置
+        { 和 }：用于指定前面字符的数量
+        [ 和 ]：用于定义字符集
+        ( 和 )：用于分组
+        |：表示逻辑或
+        \：用于转义，本身也需要被转义为\\\\*/
