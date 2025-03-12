@@ -6,35 +6,60 @@ import java.util.List;
 
 // 39. 组合总和
 public class Solution39 {
+    // 存储所有符合条件的组合
     List<List<Integer>> res = new ArrayList<>();
+    // 存储当前探索的路径
     List<Integer> path = new ArrayList<>();
 
+    /**
+     * 寻找所有数字和为 target 的组合
+     * @param candidates 候选数字数组
+     * @param target 目标和
+     * @return 所有符合条件的组合
+     */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> res = new ArrayList<>();
-        Arrays.sort(candidates); // 先进行排序,
+
+        // 对候选数组进行排序，以便后续使用剪枝
+        Arrays.sort(candidates);
+        // 开始回溯搜索，初始路径为空，从数组第一个元素开始探索
         backtracking(res, new ArrayList<>(), candidates, target, 0, 0);
         return res;
     }
 
+    /**
+     * 回溯函数，用于寻找所有符合条件的组合
+     * @param res 结果集，用于存储所有符合条件的组合
+     * @param path 当前探索路径
+     * @param candidates 候选数字数组
+     * @param target 目标和
+     * @param sum 当前路径的数字和
+     * @param idx 当前探索的起始索引
+     */
     public void backtracking(List<List<Integer>> res, List<Integer> path, int[] candidates, int target, int sum,
                              int idx) {
         // 找到了数字和为 target 的组合
         if (sum == target) {
+            // 将当前路径添加到结果集
             res.add(new ArrayList<>(path));
             return;
         }
 
+        // 从当前索引开始探索剩余的候选数字
         for (int i = idx; i < candidates.length; i++) {
             // 如果 sum + candidates[i] > target 就终止遍历
             if (sum + candidates[i] > target) {
                 break;
             }
+            // 将当前候选数字添加到探索路径
             path.add(candidates[i]);
-            backtracking(res, path, candidates, target, sum + candidates[i], i);//这里不是i+1是因为元素可以选择无数次
-            path.remove(path.size() - 1); // 回溯，移除路径 path 最后一个元素
+            // 继续探索，注意这里可以重复使用同一元素，因此是i而不是i+1
+            backtracking(res, path, candidates, target, sum + candidates[i], i);
+            // 回溯，移除路径 path 最后一个元素，探索下一种可能的组合
+            path.remove(path.size() - 1);
         }
     }
 }
+
 
 
 /*
