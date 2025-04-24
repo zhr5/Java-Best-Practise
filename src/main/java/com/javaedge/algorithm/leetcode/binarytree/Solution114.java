@@ -28,20 +28,25 @@ public class Solution114 {
 
 
     public void flatten1(TreeNode root) {//递归
-        if (root == null) {
-            return;
-        }
-        flatten(root.left);
-        flatten(root.right);
-        TreeNode left = root.left;
-        TreeNode right = root.right;
+        if (root == null) return;
+
+        // 递归展开左子树和右子树
+        flatten1(root.left);
+        flatten1(root.right);
+
+        // 保存当前节点的右子树
+        TreeNode rightTree = root.right;
+        // 将左子树接到右子树的位置
+        root.right = root.left;
+        // 左子树置空
         root.left = null;
-        root.right = left;
-        TreeNode p = root;
-        while (p.right != null) {
-            p = p.right;
+
+        // 找到当前右子树（原左子树）的最后一个节点，连接原右子树
+        TreeNode curr = root;
+        while (curr.right != null) {
+            curr = curr.right;
         }
-        p.right = right;//将右子树接到左子树的最右边节点
+        curr.right = rightTree;
     }
     public void flatten2(TreeNode root) {//与3一样
         while (root != null) {
