@@ -21,6 +21,7 @@ public class Solution39 {
 
         // 对候选数组进行排序，以便后续使用剪枝
         Arrays.sort(candidates);
+        // [8,7,4,3] target=11  不排序答案错误
         // 开始回溯搜索，初始路径为空，从数组第一个元素开始探索
         backtracking(res, new ArrayList<>(), candidates, target, 0, 0);
         return res;
