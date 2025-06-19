@@ -1,6 +1,7 @@
 package com.javaedge.algorithm.leetcode.backtracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Solution51 {
@@ -16,9 +17,7 @@ public class Solution51 {
     public List<List<String>> solveNQueens(int n) {
         char [] [] chess=new char [n][n];
         for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                chess[i][j]='.';
-            }
+            Arrays.fill(chess[i],'.');
         }//初始化棋盘
         dfs(chess,0,n);
         return res;
