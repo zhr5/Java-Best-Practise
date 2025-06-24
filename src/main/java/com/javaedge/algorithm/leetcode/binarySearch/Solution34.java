@@ -33,6 +33,47 @@ public class Solution34 {
 
         return new int []{l,r};
     }
+    public int[] searchRange1(int[] nums, int target) {
+        int[] res = new int[2];
+        int start=findstart(nums,target);
+        int end=findend(nums,target);
+        // 判断是否找到目标值
+        if (start < nums.length && nums[start] == target) {
+            res[0] = start;
+            res[1] = end;
+        } else {
+            res[0] = -1;
+            res[1] = -1;
+        }
+        return res;
+    }
+
+    public int findstart(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] >= target) {
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+        return l;
+    }
+
+    public int findend(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] <= target) {
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
+        }
+        return r;
+    }
+
     public static void main(String[] args) {
         int[] nums={5,7,7,8,8,10};
         int target=8;
