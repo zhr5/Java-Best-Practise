@@ -26,6 +26,7 @@ public class Solution84 {
         int[] left = new int[n];
         // right[i] 记录第 i 根柱子右侧第一个小于它的柱子索引
         int[] right = new int[n];
+
         Arrays.fill(right, n);
 
         // 单调增栈，用于寻找每个柱子左右两侧第一个较小元素
