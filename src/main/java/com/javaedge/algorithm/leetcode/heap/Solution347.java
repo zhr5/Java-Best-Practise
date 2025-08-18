@@ -12,7 +12,14 @@ public class Solution347 {
     输入: nums = [1], k = 1
     输出: [1]*/
 
+        /**
+     * 找出数组中出现频率前k高的元素
+     * @param nums 输入的整数数组
+     * @param k 需要返回的高频元素个数
+     * @return 包含前k个高频元素的数组
+     */
     public int[] topKFrequent(int[] nums, int k) {
+        //统计每个元素的出现频率
         HashMap<Integer, Integer> count = new HashMap();
         for (int n : nums) {
             count.put(n, count.getOrDefault(n, 0) + 1);
@@ -26,6 +33,7 @@ public class Solution347 {
                 heap.poll();//把频率最小的弹出
         }
 
+        //将堆中元素存入结果数组
         int[] res = new int[heap.size()];
         int i = 0;
         while (!heap.isEmpty())
@@ -33,4 +41,5 @@ public class Solution347 {
 
         return res;
     }
+
 }
