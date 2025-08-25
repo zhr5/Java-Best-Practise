@@ -39,4 +39,9 @@ public class Solution45 {
         - 下一跳能覆盖的最远位置: max(4, 3) = 4
         - 当i=2时到达区间末尾，必须跳了，steps=2
 
-此时最远位置已经是4，已经到达终点，结束。*/
+此时最远位置已经是4，已经到达终点，结束。
+i=0 maxPosition=2 steps=1 end=2
+i=1 maxPosition=4 steps=1 end=4
+i=2 maxPosition=4 steps=2 end=4
+i=3 maxPosition=4 steps=2 end=4
+*/
