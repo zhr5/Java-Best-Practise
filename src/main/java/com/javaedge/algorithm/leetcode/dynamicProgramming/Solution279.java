@@ -21,17 +21,35 @@ import java.util.Arrays;
 public class Solution279 {
     //背包容量n，物品大小1 4 9 16 ...求达到容量n的最小物品数，物品可重复取(完全背包)
     //物品数组nums {1,4,9,16,...根号n}
+    /**
+     * 使用动态规划求解和为n的完全平方数的最少数量
+     * 将问题转化为完全背包问题：背包容量为n，物品为所有小于等于n的完全平方数，求装满背包的最小物品数量
+     *
+     * @param n 正整数，表示目标和值 (1 <= n <= 10^4)
+     * @return int 表示组成n的最小完全平方数个数
+     */
     public int numSquares(int n) {
-        int [] dp=new int [n+1];//dp[i]表示和为 i 的完全平方数的最少数量 dp[j]=min(dp[j-i*i]+1,dp[j])
+        // 初始化动态规划数组
+        // dp[i]表示和为i的完全平方数的最少数量
+        int [] dp = new int [n+1];
+        // 填充最大值作为初始状态（取Integer.MAX_VALUE是为了后续比较时能被替换）
         Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0]=0;
-        for(int i=0;i<=n;i++){
-            for(int j=1;j*j<=i;j++){
-                dp[i]=Math.min(dp[i-j*j]+1,dp[i]);
+        // 基础状态：和为0需要0个平方数
+        dp[0] = 0;
+
+        // 外层循环遍历所有可能的和值（从0到n）
+        for(int i = 0; i <= n; i++){// 从0到n背包容量
+            // 内层循环遍历所有可能的平方数（j*j <= i）
+            for(int j = 1; j*j <= i; j++){//遍历取物品
+                // 状态转移方程：当前值可以通过添加一个j*j得到
+                // Math.min用于保持最小数量的解
+                dp[i] = Math.min(dp[i - j*j] + 1, dp[i]);
             }
         }
+        // 返回最终解：和为n的最小平方数数量
         return dp[n];
     }
+
 }
  /* j 在增长过程中负责遍历所有可能的完全平方数，并为当前和 i 提供组合选择。
   每增加一个 j，就会对 dp 数组进行相应更新，确保所有可能的组合都得到考虑，从而找到和为 i 的最小完全平方数数量。*/

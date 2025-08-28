@@ -1,6 +1,6 @@
 package com.javaedge.algorithm.leetcode.dynamicProgramming;
 
-public class Solution11143 {
+public class Solution1143 {
     // 计算两个字符串的最长公共子序列长度
 /*    public int longestCommonSubsequence1(String text1, String text2) {
         int [] [] dp =new int [text1.length()+1][text2.length()+1];// dp[i][j] 表示text1 的text1[0]...text1[i-1] 和text2[0]...text2[j-1]最长公共子序列
