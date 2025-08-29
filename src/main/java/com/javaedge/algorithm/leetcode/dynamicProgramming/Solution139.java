@@ -17,10 +17,10 @@ public class Solution139 {
         Set<String> set = new HashSet<>(wordDict);
         boolean[] dp = new boolean[s.length() + 1];// dp[i] 表示 s 的前 i 个字符是否可以切割成字典中的单词
         dp[0] = true;    // 空字符串可以切割
-        for (int i = 1; i <= s.length(); i++) {
+        for (int i = 1; i <= s.length(); i++) {//为什么i从1开始？
             // 遍历所有可能的分割点，检查是否存在有效分割
             for (int j = 0; j < i; j++) {
-                if (dp[j] && set.contains(s.substring(j, i))) {
+                if (dp[j] && set.contains(s.substring(j, i))) {//注意substring是左闭右开的，所有i从1开始表示取第一个字符
                     dp[i] = true;
                     break;
                 }
