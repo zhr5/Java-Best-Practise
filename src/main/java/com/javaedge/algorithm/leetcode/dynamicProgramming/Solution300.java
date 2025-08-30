@@ -44,7 +44,7 @@ public class Solution300 {
             // 对于每个元素，再从开头遍历到当前元素之前，寻找比当前元素小的元素
             for(int j = 0; j < i; j++) {
                 // 如果找到比当前元素小的元素，更新当前元素的最长递增子序列长度
-                if(nums[j] < nums[i])
+                if(nums[i] > nums[j])
                     dp[i] = Math.max(dp[i], dp[j] + 1);
             }
             // 更新全局最长递增子序列长度
