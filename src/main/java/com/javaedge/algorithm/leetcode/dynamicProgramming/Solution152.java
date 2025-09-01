@@ -16,6 +16,7 @@ package com.javaedge.algorithm.leetcode.dynamicProgramming;
         -10 <= nums[i] <= 10
         nums 的任何子数组的乘积都 保证 是一个 32-位 整数*/
 public class Solution152 {
+
 /*    遍历数组时计算当前最大值，不断更新
     令imax为当前最大值，则当前最大值为 imax = max(imax * nums[i], nums[i])
     由于存在负数，那么会导致最大的变最小的，最小的变最大的。因此还需要维护当前最小值imin，imin = min(imin * nums[i], nums[i])
@@ -26,21 +27,32 @@ public class Solution152 {
     链接：https://leetcode.cn/problems/maximum-product-subarray/solutions/7561/hua-jie-suan-fa-152-cheng-ji-zui-da-zi-xu-lie-by-g/
     来源：力扣（LeetCode）
     著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。*/
+    /**
+     * 找出数组中乘积最大的非空连续子数组，并返回该子数组所对应的乘积
+     * @param nums 整数数组
+     * @return 乘积最大的连续子数组的乘积值
+     */
     public int maxProduct(int[] nums) {
-        int max = Integer.MIN_VALUE, imax = 1, imin = 1;// imax 记录以当前元素结尾的最大乘积，imin 记录以当前元素结尾的最小乘积
+        int max = Integer.MIN_VALUE, imax = 1, imin = 1;
+        // 遍历数组，计算以每个元素结尾的子数组的最大和最小乘积
         for(int i=0; i<nums.length; i++){
-            if(nums[i] < 0){// 如果当前元素为负数，则交换 imax 和 imin
+            // 当遇到负数时，最大值和最小值会互换角色
+            if(nums[i] < 0){
                 int tmp = imax;
                 imax = imin;
                 imin = tmp;
             }
+            // 更新以当前元素结尾的最大和最小乘积
             imax = Math.max(imax*nums[i], nums[i]);
             imin = Math.min(imin*nums[i], nums[i]);
 
+            // 更新全局最大乘积
             max = Math.max(max, imax);
         }
         return max;
     }
+
+
     public static void main(String[] args) {
         int[] nums = {2,3,-2,4};
         Solution152 solution152 = new Solution152();
