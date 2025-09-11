@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution763 {
+   /* 关键是：每个分区必须包含该分区内所有字符的「最后一次出现位置」。*/
     public List<Integer> partitionLabels(String s) {
         // 记录每个字符最后出现的位置
         int[] lastIndex = new int[26];
