@@ -19,6 +19,25 @@ public class Solution49 {
 
         return new ArrayList<>(mp.values());//通过values方法获取结果数组
     }
+    public List<List<String>> groupAnagrams1(String[] strs) {
+        Map<String, List<String>> resMap = new HashMap<>();
+
+        for (String str : strs) {
+            // 将字符串转换为字符数组并排序，作为键值
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String sortedStr = new String(chars);
+
+            // 获取或创建列表
+            List<String> tmpRes = resMap.computeIfAbsent(sortedStr, k -> new ArrayList<>());
+            tmpRes.add(str);
+/*          这里因为List<String>是可变对象，所以通过引用修改对象会直接影响原对象。所以不用再put就可以生效
+            可变对象（如 List, ArrayList）：通过引用修改会影响原对象
+            不可变对象（如 String, Integer）：无法通过引用修改原对象*/
+        }
+
+        return new ArrayList<>(resMap.values());
+    }
   /*  public List<List<String>> groupAnagrams1(String[] strs) {
         List<List<String>> res=new ArrayList<>();
         Set<String> set=new HashSet<>();
