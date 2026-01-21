@@ -38,6 +38,7 @@ public class Solution560 {
         return count;
 
     }
+
 }
 /*
 前缀和使用场景：
@@ -62,4 +63,48 @@ public class Solution560 {
         - **问题描述**：在两个字符串中，判断一个字符串是否可以通过在另一个字符串的前面或后面添加字符得到，并且需要考虑字符的数量匹配情况（可以看作是一种特殊的“和”匹配）。
         - **解决方案**：可以将字符串中的字符转换为数字（例如，`a` 对应1，`b` 对应2等），然后计算前缀和。通过比较前缀和来判断是否满足匹配条件。不过这种方法有一定的局限性，仅适用于特定的字符串匹配场景，如字符只出现一次且顺序相对固定等简单情况。
 
+*/
+/*
+
+//返回子数组
+public List<int[]> subarraySumWithIndices(int[] nums, int k) {
+    List<int[]> result = new ArrayList<>(); // 存储 [start, end] 索引对
+    Map<Integer, List<Integer>> prefixSumMap = new HashMap<>();
+
+    prefixSumMap.put(0, new ArrayList<>());
+    prefixSumMap.get(0).add(-1);
+
+    int prefixSum = 0;
+
+    for (int i = 0; i < nums.length; i++) {
+        prefixSum += nums[i];
+
+        if (prefixSumMap.containsKey(prefixSum - k)) {
+            for (int startIdx : prefixSumMap.get(prefixSum - k)) {
+                // 添加 [startIdx+1, i] 索引对
+                result.add(new int[]{startIdx + 1, i});
+            }
+        }
+
+        prefixSumMap.putIfAbsent(prefixSum, new ArrayList<>());
+        prefixSumMap.get(prefixSum).add(i);
+    }
+
+    return result;
+}
+
+// 辅助方法：根据索引获取实际子数组
+public List<int[]> getActualSubarrays(int[] nums, int k) {
+    List<int[]> indices = subarraySumWithIndices(nums, k);
+    List<int[]> subarrays = new ArrayList<>();
+
+    for (int[] indexPair : indices) {
+        int start = indexPair[0];
+        int end = indexPair[1];
+        int[] subArray = Arrays.copyOfRange(nums, start, end + 1);
+        subarrays.add(subArray);
+    }
+
+    return subarrays;
+}
 */
